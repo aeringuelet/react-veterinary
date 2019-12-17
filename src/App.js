@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./bootstrap.min.css";
 import Header from "./components/Header";
 import NewAppointment from "./components/NewAppointment";
+import AppointmentList from "./components/AppointmentList";
 
 class App extends Component {
 	state = {
@@ -25,6 +26,12 @@ class App extends Component {
 					<div className="col-md-10 mx-auto">
 						<NewAppointment 
 							createNewAppointment={this.createNewAppointment}
+						/>
+					</div>
+
+					<div className="col-md-10 mt-5 mx-auto">
+						<AppointmentList
+							appointments={this.state.appointments}
 						/>
 					</div>
 				</div>
