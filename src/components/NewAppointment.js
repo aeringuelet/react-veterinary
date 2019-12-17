@@ -39,7 +39,7 @@ class NewAppointment extends Component {
 		const newAppointment = {...this.state.appointment}
 		newAppointment.id = uuid();
 
-		this.props.createNewAppointment(this.state.appointment);
+		this.props.createNewAppointment(newAppointment);
 
 		this.setState({
 			...initialState
