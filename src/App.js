@@ -9,6 +9,19 @@ class App extends Component {
 		appointments: []
 	};
 
+	componentDidMount = () => {
+		const appointmentsLs = localStorage.getItem('appointments');
+		if(appointmentsLs) {
+			this.setState({
+				appointments: JSON.parse(appointmentsLs)
+			})
+		}
+	}
+
+	componentDidUpdate = () => {
+		localStorage.setItem('appointments', JSON.stringify(this.state.appointments));
+	}
+
 	createNewAppointment = data => {
 		const appointments = [...this.state.appointments, data];
 
@@ -16,6 +29,18 @@ class App extends Component {
 			appointments: appointments
 		})
 	}
+
+	deleteAppointment = id => {
+		const oldAppointments = [...this.state.appointments];
+
+		const newAppointments = oldAppointments.filter(app => {
+			return app.id !== id;
+		});
+
+		this.setState({
+			appointments: newAppointments
+		})
+	};
 
 	render() {
 		return (
@@ -32,6 +57,7 @@ class App extends Component {
 					<div className="col-md-10 mt-5 mx-auto">
 						<AppointmentList
 							appointments={this.state.appointments}
+							deleteAppointment={this.deleteAppointment}
 						/>
 					</div>
 				</div>

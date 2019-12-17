@@ -1,7 +1,7 @@
 import React from 'react';
 import Appointment from './Appointment';
 
-const AppointmentList = ({appointments}) => (
+const AppointmentList = ({appointments, deleteAppointment}) => (
     <div className="card mt-2 py-5">
         <div className="card-body">
             <h2 className="card-title text-center">
@@ -13,6 +13,7 @@ const AppointmentList = ({appointments}) => (
                     <Appointment
                         key={appointment.id}
                         appointment={appointment}
+                        deleteAppointment={deleteAppointment}
                     />
                 ))}
             </div>
